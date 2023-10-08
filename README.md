@@ -247,3 +247,18 @@ update VM 9000: -cpu cputype=host
   Logical volume pve/base-9000-disk-0 changed.
  
   ```
+
+Proxmox VE 6.x release includes a feature to add custom cloud-init configs. Unfortunately there is poor documentation, so I had to figure this out by adding pieces of information together.
+
+The custom cloud-init files (user-data, meta-data, network-config)
+The cloud-init files need to be stored in a snippet. This is not very well documented:
+
+Go to Storage View -> Storage -> Add -> Directory
+Give it an ID such as snippets, and specify any path on your host such as /snippets
+Under Content choose Snippets and de-select Disk image (optional)
+Upload (scp/rsync/whatever) your user-data, meta-data, network-config files to your proxmox server in /snippets/snippets/ (the directory should be there if you followed steps 1-3)
+Finally, you just need to qm set with --cicustom, like this:
+
+
+
+ ``` qm set 100 --cicustom "user=snippets:snippets/user-data,network=snippets:snippets/network-config,meta=snippets:snippets/meta-data"  ```
