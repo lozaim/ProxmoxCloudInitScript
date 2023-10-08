@@ -20,11 +20,9 @@ https://forum.proxmox.com/ < Proxmox Community Forum.
 
 * Modify the variables section to your needs as per the instructions below.
 
-* I install libguestfs-tools after updating and upgrading the base Ubuntu packages as this package is needed to be able to run the ``` virt-customize ``` commands.
-
 * Give the script execute permissions ``` chmod +x create-ubuntu-jammy-template.sh ```
 
-* Finally run the script ``` ./create-ubuntu-jammy-template.sh ```
+* Finally run the script ``` ./create-ubuntu-2204-template.sh ```
 
 ### A copy of the script being run on my pve host is located at the bottom of this page for information. ###
 
@@ -32,11 +30,12 @@ https://forum.proxmox.com/ < Proxmox Community Forum.
 ### Variables ###
 
 ``` 
-imageURL=https://cloud-images.ubuntu.com/jammy/20230504/jammy-server-cloudimg-amd64.img
-imageName="jammy-server-cloudimg-amd64.img"
-volumeName="local-lvm"
+imageURL=https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64.img
+imageName="ubuntu-22.04-server-cloudimg-amd64.img"
+diskName="ubuntu-22.04-server-cloudimg-amd64.qcow2"
+volumeName="iso_ssd"
 virtualMachineId="9000"
-templateName="jammy-tpl"
+templateName="2204-templ"
 tmp_cores="2"
 tmp_memory="2048"
 rootPasswd="password"
