@@ -1,0 +1,23 @@
+#cloud-config
+#
+# https://cloudinit.readthedocs.io/en/latest/reference/examples.html
+#
+#
+#
+# To create a hash password use mkpasswd -m sha256crypt
+hostname: ubuntu-2204-serv
+manage_etc_hosts: true
+users:
+  - name: user
+    primary_group: user
+    groups: users,sudo
+    ssh_authorized_keys: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9+BtHHqA3zwKhPgrpq7QKEvYWg3R7+UhnNCM/cle/hH+vdYxBVlZX7>
+    lock_passwd: false
+    sudo: ALL=(ALL:ALL) ALL
+    shell: /bin/bash
+    passwd: $5$DBixnFvFilsffP0R$WB.ruOyaVtbBPiKrxhSGEXNLgz1ovD.ITjOfA6ftLJ0
+chpasswd:
+  expire: False
+package_upgrade: true
+ssh_pwauth: True # Enabled password Authentication to ssh
+
