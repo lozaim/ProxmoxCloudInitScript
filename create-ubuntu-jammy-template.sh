@@ -25,7 +25,7 @@ qemu-img resize $diskPath 20G
 qm set $virtualMachineId --scsihw virtio-scsi-single 
 qm set $virtualMachineId --scsi0 $volumeName:$virtualMachineId/vm-$virtualMachineId-disk-0.qcow2
 qm set $virtualMachineId --boot c --bootdisk scsi0
-qm set $virtualMachineId --ide2 $volumeName:cloudinit
+qm set $virtualMachineId --ide0 $volumeName:cloudinit
 qm set $virtualMachineId --serial0 socket --vga serial0
 qm set $virtualMachineId --ipconfig0 ip=dhcp
 qm template $virtualMachineId
