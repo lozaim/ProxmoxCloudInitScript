@@ -21,7 +21,7 @@ cp /var/lib/vz/snippets/$template_id.yaml /var/lib/vz/snippets/$vm_id-user-data.
 sed -i "s/ubuntu/$vm_hostname/" /var/lib/vz/snippets/$vm_id-user-data.yaml
 qm set $template_id --cicustom "user=local:snippets/$vm_id-user-data.yaml"
 # Create VM from template
-pvesh create /nodes/prox2/qemu/template_id/clone --newid $vm_id --full --name=$vm_hostname
+pvesh create /nodes/prox2/qemu/$template_id/clone --newid $vm_id --full --name=$vm_hostname
 # Starting VM
 qm start $vm_id
 echo ""
@@ -45,7 +45,7 @@ qm disk unlink $vm_id --idlist ide0 --force
 sed -i '/cicustom/d' /etc/pve/qemu-server/$vm_id.conf
 sed -i '/sshkeys/d' /etc/pve/qemu-server/$vm_id.conf
 # Apply standart snipped to vm-template
-qm set template_id --cicustom "user=local:snippets/template_id.yaml"
+qm set $template_id --cicustom "user=local:snippets/$template_id.yaml"
 # Starting VM
 qm start $vm_id
 # Check if VM still stopped
