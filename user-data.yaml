@@ -2,7 +2,9 @@
 #
 # https://cloudinit.readthedocs.io/en/latest/reference/examples.html
 #
-#
+# save this file to /var/lib/vz/snippets/user-data.yaml
+# then attach to VM
+# qm set 3000 --cicustom "user=local:snippets/user-data.yaml"
 #
 # To create a hash password use mkpasswd -m sha256crypt
 hostname: ubuntu-2204-serv
