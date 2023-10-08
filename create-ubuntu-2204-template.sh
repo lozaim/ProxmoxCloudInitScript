@@ -1,8 +1,8 @@
 #!/bin/bash
 
-imageURL=https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img
-imageName="jammy-server-cloudimg-amd64.img"
-diskName="jammy-server-cloudimg-amd64.qcow2"
+imageURL=https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64.img
+imageName="ubuntu-22.04-server-cloudimg-amd64.img"
+diskName="ubuntu-22.04-server-cloudimg-amd64.qcow2"
 volumeName="iso_ssd"
 virtualMachineId="9000"
 templateName="jammy-tpl"
