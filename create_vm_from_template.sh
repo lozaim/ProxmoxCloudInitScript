@@ -2,6 +2,8 @@
 #
 # Scripfor for manually create VM from vm-template via CLI
 #
+template_id=4000
+
 echo ""
 echo " Proxmox Creation VM Tool"
 echo ""
@@ -15,9 +17,9 @@ read -p " Please enter VM hostname: " vm_hostname
 
 echo $vm_hostname
 # Copy snippent to the new file, cnange hostname and apply snippet to template
-cp /var/lib/vz/snippets/4000.yaml /var/lib/vz/snippets/$vm_id-user-data.yaml
+cp /var/lib/vz/snippets/$template_id.yaml /var/lib/vz/snippets/$vm_id-user-data.yaml
 sed -i "s/ubuntu/$vm_hostname/" /var/lib/vz/snippets/$vm_id-user-data.yaml
-qm set 4000 --cicustom "user=local:snippets/$vm_id-user-data.yaml"
+qm set $template_id --cicustom "user=local:snippets/$vm_id-user-data.yaml"
 # Create VM from template
 pvesh create /nodes/prox2/qemu/4000/clone --newid $vm_id --full --name=$vm_hostname
 # Starting VM
