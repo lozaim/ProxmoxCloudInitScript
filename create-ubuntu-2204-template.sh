@@ -16,7 +16,7 @@ fi
 
 qm destroy $virtualMachineId
 #virt-customize -a $imageName --root-password password:$rootPasswd
-qm create $virtualMachineId --name $templateName --memory $tmp_memory --cores $tmp_cores --net0 virtio,bridge=vmbr1
+qm create $virtualMachineId --name $templateName --memory $tmp_memory --cores $tmp_cores --agent=1  --net0 virtio,bridge=vmbr1
 cp $imageName $diskName
 #qemu-img resize $diskName 20G
 qm importdisk $virtualMachineId $imageName $volumeName --format qcow2
