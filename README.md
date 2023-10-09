@@ -261,3 +261,8 @@ Finally, you just need to qm set with --cicustom, like this:
 
 
  ``` qm set 100 --cicustom "user=snippets:snippets/user-data,network=snippets:snippets/network-config,meta=snippets:snippets/meta-data"  ```
+
+
+ ### Reset the machine-id with cat /dev/null > /etc/machine-id
+### Another command to reset the machine-id: cat /dev/null > /var/lib/dbus/machine-id
+### Run cloud-init clean
