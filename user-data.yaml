@@ -7,7 +7,7 @@
 # qm set 3000 --cicustom "user=local:snippets/user-data.yaml"
 #
 # To create a hash password use mkpasswd -m sha256crypt
-hostname: ubuntu-2204-serv
+hostname: ubuntu
 manage_etc_hosts: true
 users:
   - name: user
@@ -20,6 +20,10 @@ users:
     passwd: $5$DBixnFvFilsffP0R$WB.ruOyaVtbBPiKrxhSGEXNLgz1ovD.ITjOfA6ftLJ0
 chpasswd:
   expire: False
-package_upgrade: true
-ssh_pwauth: True # Enabled password Authentication to ssh
+package_upgrade: true # Upgrade packages
+packages: ['qemu-guest-agent'] # Install packages
+ssh_pwauth: True  # Enabled password Authentication to ssh
+runcmd:
+  - [touch, /etc/cloud/cloud-init.disabled]
+  - [shutdown]
 
