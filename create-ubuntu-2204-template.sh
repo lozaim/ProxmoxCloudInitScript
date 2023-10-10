@@ -7,7 +7,7 @@ diskSize=20G
 volumeName="iso_ssd"
 templateId="9000"
 templateName="2204-templ"
-tmp_cores="2"
+tmp_cores="1"
 tmp_memory="2048"
 
 # Check if image already exist
@@ -30,7 +30,7 @@ diskPath=$(eval "pvesm path $volumeName:$templateId/vm-$templateId-disk-0.qcow2"
 qemu-img resize $diskPath $diskSize
 # Attach device to VM
 qm set $templateId --scsihw virtio-scsi-single 
-qm set $templateId --scsi0 $volumeName:$templateId/vm-$templateId-disk-0.qcow2
+qm set $templateId --scsi0 $volumeName:$templateId/vm-$templateId-disk-0.qcow2,ssd=1
 qm set $templateId --boot c --bootdisk scsi0
 qm set $templateId --ide0 $volumeName:cloudinit
 qm set $templateId --serial0 socket --vga serial0
