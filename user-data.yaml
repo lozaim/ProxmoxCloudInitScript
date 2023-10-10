@@ -6,6 +6,8 @@
 # then attach to VM
 # qm set 3000 --cicustom "user=local:snippets/user-data.yaml"
 #
+#    sudo: ALL=(ALL) NOPASSWD:ALL for passwordless access
+#
 # To create a hash password use mkpasswd -m sha256crypt
 hostname: ubuntu
 manage_etc_hosts: true
