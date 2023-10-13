@@ -23,7 +23,19 @@ qm set $templateId --cicustom "user=local:snippets/$virtualMachineId-user-data.y
 # Create VM from template
 pvesh create /nodes/prox2/qemu/$templateId/clone --newid $virtualMachineId --full --name=$vm_hostname
 # Starting VM
+echo ""
+echo " VM Configuring starting.. "
+echo ""
 qm start $virtualMachineId
+sleep 5
+# Get MAC address from VM
+get_vm_mac_addr() {
+  qm config "$1" | awk '/net0/ { print tolower($2) }' | \
+    sed -r 's/virtio=(.*),.*/\1/g'
+}
+virtualMachineMAC=$(get_vm_mac_addr "$virtualMachineId")
+echo ""
+echo " MAC address of VM is $virtualMachineMAC "
 echo ""
 echo " VM Configuring. Please wait approx 120sec.. "
 echo ""
